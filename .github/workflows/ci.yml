@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    startegy:
+    strategy:
       matrix:
         node-version: [14.x]
 
@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
-          
+
       - name: install dependencies
         run: yarn
       - name: run the lint
