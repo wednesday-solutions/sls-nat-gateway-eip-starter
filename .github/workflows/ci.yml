@@ -3,12 +3,11 @@ on:
   pull_request:
     branches:
       - dev
-      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    startegy:
+    strategy:
       matrix:
         node-version: [14.x]
 
@@ -19,10 +18,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
+
+      - name: install dependencies
         run: yarn
       - name: run the lint
         run: yarn lint
-      - name: run the tests
-        run: yarn test
       - name: run the build
         run: yarn build
